@@ -1,30 +1,38 @@
 <script>
-	export let name;
+	import { onMount } from "svelte"
+	import { today, currentWeek, currentYear, startDateOfWeek } from "./stores/dates.js"
+
+	import Header from "./components/Header.svelte"
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+<main class="board">
+	<header class="board__header">
+		<Header />
+	</header>
+
+	<div class="board__content">
+
+	</div>
 </main>
 
 <style>
-	main {
+	.board {
+		display: grid;
+		grid-template-rows: 200px auto;
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.board__header {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		background: #111;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.board__content {
+		background: #333;
+		overflow-y: scroll;
 	}
 </style>
