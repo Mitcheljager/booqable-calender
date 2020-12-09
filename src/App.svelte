@@ -10,7 +10,7 @@
 		<Header />
 	</header>
 
-	<div class="board__content">
+	<div class="board__content" data-role="content">
 		<Content />
 	</div>
 </main>

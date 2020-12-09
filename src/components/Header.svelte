@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte"
 
+  import { orders } from "../stores/data.js"
   import { daysOfTheWeek } from "../stores/daysOfTheWeek.js"
   import { monthNames } from "../stores/monthNames.js"
   import { today, currentDay, currentWeek, currentYear, viewingWeek, startDateOfWeek } from "../stores/dates.js"
@@ -18,6 +19,7 @@
 
 	function setWeek(value) {
 		viewingWeek.set($viewingWeek + value)
+    orders.set([])
 
 		setStartDateOfWeek()
 	}
