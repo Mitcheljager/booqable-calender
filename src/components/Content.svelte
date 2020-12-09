@@ -86,8 +86,6 @@
     const elementHeight = element.offsetHeight
     const scrollDepth = parentElement.scrollTop
 
-    console.log(scrollDepth + parentElementHeight + 100)
-
     if (scrollDepth + parentElementHeight + 100 > elementHeight) {
       clearTimeout(debounce)
       debounce = setTimeout(() => {
