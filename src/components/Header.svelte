@@ -2,6 +2,7 @@
   import { onMount } from "svelte"
 
   import { daysOfTheWeek } from "../stores/daysOfTheWeek.js"
+  import { monthNames } from "../stores/monthNames.js"
   import { today, currentDay, currentWeek, currentYear, viewingWeek, startDateOfWeek } from "../stores/dates.js"
 
   let weekNumber = $currentWeek
@@ -26,13 +27,16 @@
 	}
 </script>
 
-<h1>Week { weekNumber }</h1>
-
-{ $startDateOfWeek.toDateString() }
-
 <div>
-  <button on:click={ () => setWeek(-1) }>-</button>
-  <button on:click={ () => setWeek(1) }>+</button>
+  <div>
+    { $monthNames[$startDateOfWeek.getMonth()] }
+    { $startDateOfWeek.getFullYear() }
+  </div>
+
+  <h1 class="title">Week { weekNumber }</h1>
+
+  <button class="button" on:click={ () => setWeek(-1) }>← Prev week</button>
+  <button class="button" on:click={ () => setWeek(1) }>Next week →</button>
 </div>
 
 <div class="days-header">
@@ -49,12 +53,12 @@
   .days-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-top: 1px solid gray;
+    background: #444;
   }
 
   .days-header__item {
-    padding: .5rem 0;
-    border-right: 1px solid gray;
+    padding: 1rem 0;
+    border-right: 1px solid #666;
 
     &:last-child {
       border-right: 0;
@@ -68,5 +72,25 @@
   .days-header__date {
     font-size: .75rem;
     color: lightgray;
+  }
+
+  .title {
+    margin: 1rem 0;
+  }
+
+  .button {
+    display: inline-block;
+    height: 2rem;
+    background: #555;
+    border: 0;
+    border-radius: 99px;
+    padding: .25rem 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background: gray;
+    }
   }
 </style>

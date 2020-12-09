@@ -15,7 +15,7 @@
 	</div>
 </main>
 
-<style>
+<style lang="scss">
 	.board {
 		display: grid;
 		grid-template-rows: 200px auto;
@@ -28,11 +28,22 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		background: #111;
+		padding-top: 1rem;
+		background: #333;
 		text-align: center;
 	}
 
 	.board__content {
-		background: #333;
+		position: relative;
+		height: 100%;
+		background-image: linear-gradient(to right, #222 0%, #222 50%, #2f2f2f 50%, #2f2f2f 100%);
+    background-size: #{ (100% / 7) * 2 };
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+	    width: 0;
+			height: 0;
+			background: transparent;
+	  }
 	}
 </style>
