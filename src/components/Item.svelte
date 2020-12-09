@@ -1,7 +1,6 @@
 <script>
   export let i
   export let order
-  export let weekDay
   export let weekEndDay
 
   let startDate = new Date(order.attributes.starts_at)

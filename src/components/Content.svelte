@@ -5,6 +5,7 @@
   import { startDateOfWeek } from "../stores/dates.js"
 
   import Item from "./Item.svelte"
+  import Loading from "./Loading.svelte"
 
   $: loading = true
   $: endDate = new Date($startDateOfWeek.getTime() + 86400000 * 7)
@@ -101,15 +102,13 @@
 <div class="grid { loading ? "grid--loading" : "" }">
   { #each days as day, i }
     { #each ordersOnDate(day) as order }
-      <Item order={ order } i={i} weekDay={ day } weekEndDay={ endDate } />
+      <Item order={ order } i={i} weekEndDay={ endDate } />
     { /each }
   { /each }
 </div>
 
 { #if loading }
-  <div class="loading">
-    <div class="spinner"></div>
-  </div>
+  <Loading />
 { /if }
 
 <style lang="scss">
@@ -121,37 +120,6 @@
 
     &--loading {
       padding-bottom: 0;
-    }
-  }
-
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10rem;
-    width: 100%;
-  }
-
-  @keyframes spinner {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .spinner {
-    display: block;
-    width: 4rem;
-    height: 4rem;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      border: .5rem solid white;
-      border-color: white rgba(255, 255, 255, .1) rgba(255, 255, 255, .1);
-      animation: spinner 750ms linear infinite;
     }
   }
 </style>
