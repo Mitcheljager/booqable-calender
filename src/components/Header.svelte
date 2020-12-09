@@ -1,12 +1,13 @@
 <script>
+  import { onMount } from "svelte"
+
   import { daysOfTheWeek } from "../stores/daysOfTheWeek.js"
   import { today, currentDay, currentWeek, currentYear, viewingWeek, startDateOfWeek } from "../stores/dates.js"
-  import { onMount } from "svelte"
 
   let weekNumber = $currentWeek
   $: if ($viewingWeek > 53) {
     weekNumber = $viewingWeek - 53
-  } else if ($viewingWeek < 0) {
+  } else if ($viewingWeek < 1) {
     weekNumber = $viewingWeek + 53
   } else {
     weekNumber = $viewingWeek
@@ -21,11 +22,11 @@
 	}
 
 	function setStartDateOfWeek(date = $today) {
-		startDateOfWeek.set(new Date($currentYear, 0, ($viewingWeek - 1) * 7 - $today.getDay()))
+		startDateOfWeek.set(new Date($currentYear, 0, ($viewingWeek - 1) * 7 - ($today.getDay() - 1)))
 	}
 </script>
 
-<h1>Current Week { weekNumber }</h1>
+<h1>Week { weekNumber }</h1>
 
 { $startDateOfWeek.toDateString() }
 
@@ -52,7 +53,7 @@
   }
 
   .days-header__item {
-    padding: 1rem 0;
+    padding: .5rem 0;
     border-right: 1px solid gray;
 
     &:last-child {
@@ -65,8 +66,7 @@
   }
 
   .days-header__date {
-    display: block;
-    font-size: 0.75rem;
-
+    font-size: .75rem;
+    color: lightgray;
   }
 </style>

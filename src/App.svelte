@@ -1,8 +1,8 @@
 <script>
-	import { onMount } from "svelte"
 	import { today, currentWeek, currentYear, startDateOfWeek } from "./stores/dates.js"
 
 	import Header from "./components/Header.svelte"
+	import Content from "./components/Content.svelte"
 </script>
 
 <main class="board">
@@ -11,7 +11,7 @@
 	</header>
 
 	<div class="board__content">
-
+		<Content />
 	</div>
 </main>
 
@@ -21,6 +21,7 @@
 		grid-template-rows: 200px auto;
 		height: 100vh;
 		width: 100vw;
+		overflow: hidden;
 	}
 
 	.board__header {
@@ -33,6 +34,5 @@
 
 	.board__content {
 		background: #333;
-		overflow-y: scroll;
 	}
 </style>

@@ -1,13 +1,13 @@
 import { readable } from "svelte/store"
 
 const daysOfTheWeek = readable([
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat"
 ])
 
 export { daysOfTheWeek }
