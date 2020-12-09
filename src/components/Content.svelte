@@ -80,11 +80,15 @@
   function loadMoreOnScroll() {
     if (reachedFinalPage || loading) return
 
-    const element = event.target
+    const parentElement = event.target
+    const parentElementHeight = parentElement.offsetHeight
+    const element = parentElement.querySelector(".grid")
     const elementHeight = element.offsetHeight
-    const scrollDepth = element.scrollTop
+    const scrollDepth = parentElement.scrollTop
 
-    if (scrollDepth + 100 > elementHeight) {
+    console.log(scrollDepth + parentElementHeight + 100)
+
+    if (scrollDepth + parentElementHeight + 100 > elementHeight) {
       clearTimeout(debounce)
       debounce = setTimeout(() => {
         page++

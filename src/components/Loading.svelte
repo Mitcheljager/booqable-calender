@@ -8,7 +8,10 @@
     align-items: center;
     justify-content: center;
     height: 10rem;
-    width: 100%;
+    width: calc(100% - 6rem);
+    margin: 3rem;
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, .5);
   }
 
   @keyframes spinner {
