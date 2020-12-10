@@ -6,8 +6,6 @@
   let startDate = new Date(order.attributes.starts_at)
   let endDate = new Date(order.attributes.stops_at)
 
-  console.log(order)
-
   function orderEndsAt() {
     const daysBetween = Math.ceil((endDate.getTime() - startDate.getTime()) / 86400000)
 
